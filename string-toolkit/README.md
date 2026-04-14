@@ -28,7 +28,7 @@ yarn add @if25b050/string-toolkit
 Basic Usage
 
 ```js
-const stringToolkit = require('../dist/index');
+import * as stringToolkit from '@if25b050/string-toolkit';
 
 const string = "Hello World!";
 const newString = stringToolkit.toSnakeCase(string);
