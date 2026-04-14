@@ -39,12 +39,12 @@ console.log(newString); // e.g., "hello_world!"
 
 ## Contribution
 
-Contributions are welcome! Please see [CONTRIBUTING.md](./CONTRIBUTING.md) for more details.
+Contributions are welcome! Please see [CONTRIBUTING.md](/string-toolkit/CONTRIBUTING.md) for more details.
 
 ## Security
 
-Please refer to our [SECURITY.md](./SECURITY.md) for information about our security policies, how to report vulnerabilities, and our approach to handling security concerns.
+Please refer to our [SECURITY.md](/string-toolkit/SECURITY.md) for information about our security policies, how to report vulnerabilities, and our approach to handling security concerns.
 
 ## License
 
-This project is licensed under the [MIT License](./LICENSE.md).
+This project is licensed under the [MIT License](/string-toolkit/LICENSE.md).

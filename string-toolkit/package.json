@@ -1,6 +1,6 @@
 {
   "name": "@if25b050/string-toolkit",
-  "version": "1.0.0",
+  "version": "0.0.2",
   "description": "This is a library with some simple string manipulation functions.",
   "main": "dist/index.js",
   "umd:main": "dist/index.umd.js",
