@@ -1,0 +1,33 @@
+{
+  "name": "@if25b050/string-toolkit",
+  "version": "1.0.0",
+  "description": "This is a library with some simple string manipulation functions.",
+  "main": "dist/index.js",
+  "umd:main": "dist/index.umd.js",
+  "module": "dist/index.m.js",
+  "source": "src/index.js",
+  "scripts": {
+    "build": "microbundle",
+    "pretest": "npm run build",
+    "test": "npx jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/if25b050/CONINT.git"
+  },
+  "keywords": [
+    "array",
+    "shuffle",
+    "functional"
+  ],
+  "author": "if25b050 <if25b050@technikum-wien.at>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/if25b050/CONINT/issues"
+  },
+  "homepage": "https://github.com/if25b050/CONINT/string-toolkit#readme",
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "microbundle": "^0.15.1"
+  }
+}
