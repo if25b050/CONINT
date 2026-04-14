@@ -31,10 +31,12 @@ Basic Usage
 import * as stringToolkit from '@if25b050/string-toolkit';
 
 const string = "Hello World!";
-const newString = stringToolkit.toSnakeCase(string);
+const snakeString = stringToolkit.toSnakeCase(string);
+const kebabString = stringToolkit.toKebabCase(string);
 
 console.log(string);       // e.g., "Hello World!"
-console.log(newString); // e.g., "hello_world!"
+console.log(snakeString); // e.g., "hello_world!"
+console.log(kebabString); // e.g., "hello-world!"
 ```
 
 ## Contribution
