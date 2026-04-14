@@ -25,7 +25,7 @@
   "bugs": {
     "url": "https://github.com/if25b050/CONINT/issues"
   },
-  "homepage": "https://github.com/if25b050/CONINT/string-toolkit#readme",
+  "homepage": "https://github.com/if25b050/CONINT/tree/main/string-toolkit#readme",
   "devDependencies": {
     "jest": "^29.7.0",
     "microbundle": "^0.15.1"
