@@ -1,6 +1,6 @@
 {
   "name": "@if25b050/string-toolkit",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "This is a library with some simple string manipulation functions.",
   "main": "dist/index.js",
   "umd:main": "dist/index.umd.js",
@@ -16,8 +16,8 @@
     "url": "git+https://github.com/if25b050/CONINT.git"
   },
   "keywords": [
-    "array",
-    "shuffle",
+    "string",
+    "case",
     "functional"
   ],
   "author": "if25b050 <if25b050@technikum-wien.at>",
