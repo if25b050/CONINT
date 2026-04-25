@@ -98,3 +98,22 @@ If you encountered and resolved a new issue that isn’t yet in this document:
   - Step 1: `docker container ls`
   - Step 2: find the container thats allocating the port
   - Step 3: `docker stop <container-id> && docker rm <container-id> `
+
+
+## Typescript Code Changes are not updated
+
+**Description**: If you run `npm run setup:dev` or `docker compose up` and encounter this error or a similar with a different port, it is that the cached image of the build is reused.
+
+**Affected Systems**: ---
+
+**Steps to Reproduce**: This is just an example how this could happen, there are propably other reasons for that as well, e.g. using a database in another project...
+  - Step 1: `docker compose up` + Shutdown via CTRL+C
+  - Step 2: change some code
+  - Step 3: `npm run build`
+  - Step 3: `docker compose up`
+
+**Resolution/Workaround**:
+  - Step 1: `docker container ls`
+  - Step 2: find the web container with the nodeJS app
+  - Step 3: `docker stop <container-id> && docker rm <container-id> `
+
