@@ -27,7 +27,7 @@ npm run setup:dev
 This command will do the following for you:
 * Removes and reinstalls the node_modules with `npm run cleanup:dev`
 * Stops all previous containers with `npm run setdown:dev`
-* Spin up the database with `docker compose --file local-compose.yaml up --detach`
+* Spin up the database and redis with `docker compose --file local-compose.yaml up --detach`
 * Generate the types from the Prisma Schema for your database with `npm run prisma:generate:dev`
 * Run all database migrations so your database is always on the latest schema with `npm run migrate:dev`
 
@@ -43,7 +43,7 @@ Start the server with:
 npm run start:dev
 ```
 
-You can now visit [http://localhost:5000/ping](http://localhost:5000/ping) and start developing.
+You can now visit [http://localhost:5000/ping](http://localhost:5000/ping) or [http://localhost:5000/ping/\<user>](http://localhost:5000/ping/\<user>] and start developing.
 
 ## Production Deployment
 
@@ -55,8 +55,9 @@ docker compose up --build
 
 This command will spin up:
 * the database
-* run run the database migrations
-* start the web app that can communicate with the database on [http://localhost:5000/ping](http://localhost:5000/ping]
+* run the database migrations
+* the redis-server
+* start the web app that can communicate with the database on [http://localhost:5000/ping](http://localhost:5000/ping] and redis on [http://localhost:5000/ping/\<user>](http://localhost:5000/ping/\<user>]
 
 ## NPM Scripts
 
@@ -99,3 +100,21 @@ model SomeNewModel {
 ```
 
 and run `npm run migrate`.
+
+## Redis Details
+
+Redis should start normaly with the docker compose command.
+
+For more information about further redis authentication and configuration visit:
+* https://redis.io/docs/latest/operate/oss_and_stack/install/install-stack/docker/#connect-with-redis-cli
+* https://redis.io/tutorials/operate/orchestration/docker/
+
+## Verifying Data Persistence
+
+Data Persistence can be verified by normally building and starting the application and interacting with the commands.
+
+After the successfull interactions the container can be shutdown (and on windows docker-desktop deleted)
+
+Using the command `docker volume ls` the volumes "*ping-postgres-data" and "*ping-redis-data" should be visible.
+
+After restarting the container the ping-count and the redis-cache should be kept. 
