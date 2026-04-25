@@ -10,6 +10,8 @@ services:
       options:
         max-size: '10m'
         max-file: '3'
+    volumes:
+      - ping-postgres-data:/var/lib/postgresql/data
 
   migrations:
     build: .
@@ -29,6 +31,8 @@ services:
       - "127.0.0.1:6379:6379"
     env_file:
       - .env
+    volumes:
+      - ping-redis-data:/data
 
   web:
     build: .
@@ -45,3 +49,7 @@ services:
       options:
         max-size: '10m'
         max-file: '3'
+
+volumes:
+  ping-postgres-data:
+  ping-redis-data:
