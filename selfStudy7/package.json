@@ -9,6 +9,7 @@
     "test": "jest",
     "e2e:test": "npx playwright test",
     "load:test": "docker run --interactive --tty --rm --volume ./tests/k6:/tests --workdir /tests grafana/k6 run k6.test.js",
+    "sonar:scan": "dotenv -e .env -- npx @sonar/scan",
     "migrate": "dotenv -e .env -- npx prisma migrate deploy",
     "prisma:generate": "dotenv -e .env -- npx prisma generate",
     "cleanup:dev": "npx rimraf dist && npx rimraf node_modules && npm install",

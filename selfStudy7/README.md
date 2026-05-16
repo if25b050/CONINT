@@ -112,3 +112,8 @@ npx playwright test --ui
 npm run setup:dev
 npm run start:dev
 npm run load:test
+## Task 4
+docker compose up
+go to [sonar](http://localhost:9000/) and register local application and copy code
+sonar.projectKey und sonar.projectKey und sonar.projectName aufpassen
+npm run sonar:scan
