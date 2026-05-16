@@ -105,5 +105,10 @@ and run `npm run migrate`.
 npm run setup:dev
 docker compose up
 npm test
-# Task 2
+## Task 2
 npm init playwright@latest
+npx playwright test --ui
+## Task 3
+npm run setup:dev
+npm run start:dev
+npm run load:test

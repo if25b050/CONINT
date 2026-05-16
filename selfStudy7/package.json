@@ -4,9 +4,11 @@
   "description": "The self-study 7 of continuous integration",
   "main": "index.js",
   "scripts": {
-    "build": "dotenv -e .env -- tsc -p tsconfig.json && cp -r ./app/public ./dist/public",
-    "start": "dotenv -e .env -- node ./dist/index.js",
+    "build": "dotenv -e .env -- tsc -p tsconfig.json && cp -r ./app/public ./dist/app/public",
+    "start": "dotenv -e .env -- node ./dist/app/index.js",
     "test": "jest",
+    "e2e:test": "npx playwright test",
+    "load:test": "docker run --interactive --tty --rm --volume ./tests/k6:/tests --workdir /tests grafana/k6 run k6.test.js",
     "migrate": "dotenv -e .env -- npx prisma migrate deploy",
     "prisma:generate": "dotenv -e .env -- npx prisma generate",
     "cleanup:dev": "npx rimraf dist && npx rimraf node_modules && npm install",
@@ -30,6 +32,7 @@
   "devDependencies": {
     "@jest/globals": "^30.4.1",
     "@playwright/test": "^1.60.0",
+    "@types/k6": "^2.0.0",
     "@types/node": "^22.13.4",
     "dotenv-cli": "^8.0.0",
     "nodemon": "^3.1.9",
