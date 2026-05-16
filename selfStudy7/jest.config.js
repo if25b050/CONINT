@@ -11,6 +11,7 @@ module.exports = {
   modulePathIgnorePatterns: [
     "<rootDir>/dist/",
     "<rootDir>/node_modules/",
-    "<rootDir>/tests/e2e/"
+    "<rootDir>/tests/e2e/",
+    "<rootDir>/tests/k6/"
   ],
 };

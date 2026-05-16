@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test('get started link', async ({ page }) => {
+test('Try create todo', async ({ page }) => {
   await page.goto('http://127.0.0.1:5000');
 
   // Fill the new todo input.

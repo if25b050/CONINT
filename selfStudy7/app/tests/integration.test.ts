@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, test } from "@jest/globals";
 
-test('integration test placeholder', async () => {
+test('create todo integration test', async () => {
     const API_BASE = 'http://127.0.0.1:5000/api/v1/todos';
     const text = 'work: Integration test todo';
     // This is a placeholder for integration tests.
