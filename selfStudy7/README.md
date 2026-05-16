@@ -99,3 +99,9 @@ model SomeNewModel {
 ```
 
 and run `npm run migrate`.
+
+# Other Setup for Tasks
+## Task 1
+npm run setup:dev
+docker compose up
+npm test
