@@ -10,6 +10,7 @@ module.exports = {
   },
   modulePathIgnorePatterns: [
     "<rootDir>/dist/",
-    "<rootDir>/node_modules/"
+    "<rootDir>/node_modules/",
+    "<rootDir>/tests/e2e/"
   ],
 };
