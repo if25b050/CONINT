@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Todo List</title>
+</head>
+<body>
+  <h1>Todo List</h1>
+
+  <!-- Add Todo Form -->
+  <form id="todo-form">
+    <input type="text" id="todo-input" placeholder="Add a new todo" required/>
+    <button type="submit">Add Todo</button>
+  </form>
+
+  <!-- Where all todos will be displayed -->
+  <ul id="todo-list"></ul>
+
+  <script>
+    const API_BASE = '/api/v1/todos';
+    const todoForm = document.getElementById('todo-form');
+    const todoInput = document.getElementById('todo-input');
+    const todoList = document.getElementById('todo-list');
+
+    // Fetch all todos on page load
+    async function fetchTodos() {
+      try {
+        const response = await fetch(API_BASE);
+        if (!response.ok) {
+          throw new Error('Failed to fetch todos');
+        }
+        const { todos } = await response.json();
+        displayTodos(todos);
+      } catch (error) {
+        console.error(error);
+        todoList.innerHTML = '<li>Error fetching todos.</li>';
+      }
+    }
+
+    // Display all todos
+    function displayTodos(todos) {
+      todoList.innerHTML = '';
+      Array.isArray(todos) && todos.length > 0 && todos.forEach(todo => {
+        const li = document.createElement('li');
+
+        // The todo text
+        li.textContent = todo.text;
+
+        // Checkbox for isDone state
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.checked = todo.isDone;
+        checkbox.addEventListener('change', () => {
+          // Use PUT to send the full updated resource
+          updateTodo(todo.id, {
+            text: todo.text,
+            isDone: checkbox.checked,
+          });
+        });
+
+        // Delete button
+        const deleteBtn = document.createElement('button');
+        deleteBtn.textContent = 'Delete';
+        deleteBtn.style.marginLeft = '10px';
+        deleteBtn.addEventListener('click', () => deleteTodo(todo.id));
+
+        // Append elements
+        li.prepend(checkbox, ' ');
+        li.appendChild(deleteBtn);
+        todoList.appendChild(li);
+      });
+    }
+
+    // Create a new todo (POST)
+    async function createTodo(text) {
+      try {
+        const response = await fetch(API_BASE, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ text, isDone: false })
+        });
+        if (!response.ok) {
+          const { error } = await response.json();
+          alert(error);
+        }
+        // Refresh the todo list
+        fetchTodos();
+      } catch (error) {
+        console.error('Error creating todo:', error);
+      }
+    }
+
+    // Update a todo (PUT)
+    // Pass the FULL updated resource; `PUT` typically replaces the entire entity.
+    async function updateTodo(id, updatedTodo) {
+      try {
+        await fetch(`${API_BASE}/${id}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(updatedTodo)
+        });
+        // Refresh the todo list
+        fetchTodos();
+      } catch (error) {
+        console.error('Error updating todo:', error);
+      }
+    }
+
+    // Delete a todo
+    async function deleteTodo(id) {
+      try {
+        await fetch(`${API_BASE}/${id}`, { method: 'DELETE' });
+        // Refresh the todo list
+        fetchTodos();
+      } catch (error) {
+        console.error('Error deleting todo:', error);
+      }
+    }
+
+    // Handle form submission to create a new todo
+    todoForm.addEventListener('submit', event => {
+      event.preventDefault();
+      const text = todoInput.value.trim();
+      if (text) {
+        createTodo(text);
+        todoInput.value = '';
+      }
+    });
+
+    // Initial fetch on page load
+    fetchTodos();
+  </script>
+</body>
+</html>
