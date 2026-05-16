@@ -105,3 +105,5 @@ and run `npm run migrate`.
 npm run setup:dev
 docker compose up
 npm test
+# Task 2
+npm init playwright@latest
