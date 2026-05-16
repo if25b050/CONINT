@@ -117,3 +117,6 @@ docker compose up
 go to [sonar](http://localhost:9000/) and register local application and copy code
 sonar.projectKey und sonar.projectKey und sonar.projectName aufpassen
 npm run sonar:scan
+## Task 5
+npx snyk auth <!--  wenn notwendig, umgeht den SNYK_TOKEN -->
+npm run snyk:scan:dev
